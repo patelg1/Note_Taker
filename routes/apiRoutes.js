@@ -1,4 +1,4 @@
-const db = require('../db/db.json');
+let db = require('../db/db.json');
 const fs = require('fs');
 const uniqid = require('uniqid');
 const path = require('path');
@@ -16,25 +16,31 @@ module.exports = (app) => {
         }
         db.push(newNote);
 
-        fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(db))
+        fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(db), (err) =>{
+          if (err) throw err;
           res.json({ok: true});
+        });         
         
     })
     app.delete('/api/notes/:id', function (req, res) {
         let targetId = (req.params.id);
+        let newdb;
 
-        fs.readFileSync(path.join(__dirname, '../db/db.json'), 'utf8');
-        console.log(`Deleting note with id ${targetId}`);
-        
-         let newdb = db.filter(newNote => {
+        fs.readFile(path.join(__dirname, '../db/db.json'), 'utf8', (err) => {
+          if (err) throw err;          
+          });
+
+        console.log(`Deleting note with id ${targetId}`);        
+        db = db.filter(newNote => {
           return newNote.id !== targetId;
-        })
-        console.log(newdb);
         
-
-        fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(newdb))
-
-        res.json(({ok: true}))
-      })
+        })
+        console.log(db); 
+        
+        fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(db), (err) => {
+          if (err) throw err;
+          res.json({ok: true})
+        });        
+    })
 
 }
