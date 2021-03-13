@@ -17,26 +17,24 @@ module.exports = (app) => {
         db.push(newNote);
 
         fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(db))
-        res.json({ok: true});
+          res.json({ok: true});
         
     })
     app.delete('/api/notes/:id', function (req, res) {
-        let targetId = req.params.id;
+        let targetId = (req.params.id);
 
-        // read the db.json file
-        // we expect this to be an array
-      //  let db = fs.readfile
+        fs.readFileSync(path.join(__dirname, '../db/db.json'), 'utf8');
+        console.log(`Deleting note with id ${targetId}`);
+        
+         let newdb = db.filter(newNote => {
+          return newNote.id !== targetId;
+        })
+        console.log(newdb);
+        
 
-        // loop through that db array, 
-        // find the object that has the targetId
-        // remove that object from the db array
+        fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(newdb))
 
-        // fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(db))
-
-
-
-
-        res.send('Got a DELETE request at /api/notes/:id')
+        res.json(({ok: true}))
       })
 
 }
