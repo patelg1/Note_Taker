@@ -4,19 +4,6 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-console.log('index.js')
-
-var ages = [32, 33, 16, 40];
-
-function checkAdult(age) {
-  return age >= 18;
-}
-
-var newAges = ages.filter(checkAdult);
-
-console.log(ages);
-console.log(newAges)
-
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
