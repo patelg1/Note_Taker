@@ -36,7 +36,7 @@ Run `npm install` to install dependency [Express](https://www.npmjs.com/package/
 ## Usage
 ![Note Taker Demo](./public/assets/images/note_taker_demo.gif)
 
-Deployed Link: https://secret-wildwood-56133.herokuapp.com/notes
+Deployed Link: https://secret-wildwood-56133.herokuapp.com/
 
 
 ## Contributors
