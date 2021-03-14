@@ -34,6 +34,9 @@ THEN the note is deleted from list
 Run `npm install` to install dependency [Express](https://www.npmjs.com/package/express) and [Uniqid](https://www.npmjs.com/package/uniqid)
 
 ## Usage
+![Note Taker Demo](./public/assets/images/note_taker_demo.gif)
+
+Deployed Link: https://secret-wildwood-56133.herokuapp.com/notes
 
 
 ## Contributors
